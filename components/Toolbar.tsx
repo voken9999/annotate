@@ -1,58 +1,119 @@
 "use client";
 
-import { useState } from "react";
+import {
+  useTool,
+} from "@/context/ToolContext";
 
 export default function Toolbar() {
-  const [pressureEnabled, setPressureEnabled] =
-    useState(true);
+  const {
+    tool,
+    setTool,
+    color,
+    setColor,
+    brushSize,
+    setBrushSize,
+    pressureEnabled,
+    setPressureEnabled,
+  } = useTool();
 
   return (
     <div className="h-14 bg-zinc-800 flex items-center gap-4 px-4 text-white">
 
-      <input type="color" />
+      <button
+        onClick={() =>
+          setTool("pen")
+        }
+      >
+        Pen
+      </button>
+
+      <button
+        onClick={() =>
+          setTool("eraser")
+        }
+      >
+        Eraser
+      </button>
+
+      <button
+        onClick={() =>
+          setTool(
+            "rectangle"
+          )
+        }
+      >
+        Rectangle
+      </button>
+
+      <button
+        onClick={() =>
+          setTool("circle")
+        }
+      >
+        Circle
+      </button>
+
+      <button
+        onClick={() =>
+          setTool("arrow")
+        }
+      >
+        Arrow
+      </button>
+
+      <button
+        onClick={() =>
+          setTool("text")
+        }
+      >
+        Text
+      </button>
+
+      <input
+        type="color"
+        value={color}
+        onChange={(e) =>
+          setColor(
+            e.target.value
+          )
+        }
+      />
 
       <input
         type="range"
         min={1}
         max={30}
-        defaultValue={4}
+        value={brushSize}
+        onChange={(e) =>
+          setBrushSize(
+            Number(
+              e.target.value
+            )
+          )
+        }
       />
 
-      <button className="px-3 py-1 bg-zinc-700 rounded">
-        Pen
-      </button>
-
-      <button className="px-3 py-1 bg-zinc-700 rounded">
-        Eraser
-      </button>
-
-      <button className="px-3 py-1 bg-zinc-700 rounded">
-        Rectangle
-      </button>
-
-      <button className="px-3 py-1 bg-zinc-700 rounded">
-        Circle
-      </button>
-
-      <button className="px-3 py-1 bg-zinc-700 rounded">
-        Arrow
-      </button>
-
-      <button className="px-3 py-1 bg-zinc-700 rounded">
-        Text
-      </button>
-
-      <label className="flex items-center gap-2">
+      <label>
         Pressure
 
         <input
           type="checkbox"
-          checked={pressureEnabled}
+          checked={
+            pressureEnabled
+          }
           onChange={() =>
-            setPressureEnabled(!pressureEnabled)
+            setPressureEnabled(
+              !pressureEnabled
+            )
           }
         />
       </label>
+
+      <span>
+        Active Tool:
+        {tool}
+      </span>
+
     </div>
   );
 }
