@@ -1,7 +1,7 @@
 import "./globals.css";
 import {
   ToolProvider,
-} from "@/context/ToolContext";
+} from "../context/ToolContext";
 
 export default function RootLayout({
   children,
