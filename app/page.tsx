@@ -347,7 +347,7 @@ function UploadZone({
   inputRef,
 }: {
   onFile: (f: File) => void;
-  inputRef: React.RefObject<HTMLInputElement>;
+  inputRef: React.RefObject<HTMLInputElement | null>;
 }) {
   const [dragging, setDragging] = useState(false);
 
