@@ -1,5 +1,5 @@
 import "./globals.css";
-import { ToolProvider } from "@/context/ToolContext";
+import { ToolProvider } from "../context/ToolContext";
 
 export default function RootLayout({
   children,
