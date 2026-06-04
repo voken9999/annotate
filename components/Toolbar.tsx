@@ -1,8 +1,6 @@
 "use client";
 
-import {
-  useTool,
-} from "@/context/ToolContext";
+import { useTool } from "../context/ToolContext";
 
 export default function Toolbar() {
   const {
