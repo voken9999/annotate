@@ -1,7 +1,5 @@
 import "./globals.css";
-import {
-  ToolProvider,
-} from "../context/ToolContext";
+import { ToolProvider } from "@/context/ToolContext";
 
 export default function RootLayout({
   children,
@@ -9,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="en">
       <body>
         <ToolProvider>
           {children}
