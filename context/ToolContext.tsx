@@ -7,7 +7,7 @@ import {
   ReactNode,
 } from "react";
 
-export type ToolType =
+type ToolType =
   | "pen"
   | "eraser"
   | "rectangle"
@@ -23,9 +23,7 @@ interface ToolContextType {
   setColor: (color: string) => void;
 
   brushSize: number;
-  setBrushSize: (
-    size: number
-  ) => void;
+  setBrushSize: (size: number) => void;
 
   pressureEnabled: boolean;
   setPressureEnabled: (
@@ -49,10 +47,8 @@ export function ToolProvider({
   const [color, setColor] =
     useState("#ff0000");
 
-  const [
-    brushSize,
-    setBrushSize,
-  ] = useState(4);
+  const [brushSize, setBrushSize] =
+    useState(4);
 
   const [
     pressureEnabled,
@@ -78,13 +74,14 @@ export function ToolProvider({
 }
 
 export function useTool() {
-  const ctx =
+  const context =
     useContext(ToolContext);
 
-  if (!ctx)
+  if (!context) {
     throw new Error(
-      "ToolProvider missing"
+      "useTool must be used inside ToolProvider"
     );
+  }
 
-  return ctx;
+  return context;
 }
