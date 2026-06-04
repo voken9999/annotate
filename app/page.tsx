@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Toolbar from "@/components/Toolbar";
-import PDFViewer from "@/components/PDFViewer";
+import Toolbar from "../components/Toolbar";
+import PDFViewer from "../components/PDFViewer";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
