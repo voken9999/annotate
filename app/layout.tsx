@@ -1,5 +1,12 @@
 import "./globals.css";
-import { ToolProvider } from "../context/ToolContext";
+
+import {
+  ToolProvider,
+} from "../context/ToolContext";
+
+import {
+  DocumentProvider,
+} from "../context/DocumentContext";
 
 export default function RootLayout({
   children,
@@ -10,7 +17,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ToolProvider>
-          {children}
+          <DocumentProvider>
+            {children}
+          </DocumentProvider>
         </ToolProvider>
       </body>
     </html>
