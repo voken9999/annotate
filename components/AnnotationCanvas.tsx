@@ -47,7 +47,7 @@ export default function AnnotationCanvas({
 
     if (!ctx) return;
 
-    ctx.clearRect(
+    ctx!.clearRect(
       0,
       0,
       canvas.width,
@@ -66,29 +66,29 @@ export default function AnnotationCanvas({
         )
           return;
 
-        ctx.beginPath();
+        ctx!.beginPath();
 
-        ctx.strokeStyle =
+        ctx!.strokeStyle =
           annotation.color;
 
-        ctx.lineWidth =
+        ctx!.lineWidth =
           annotation.width;
 
-        ctx.lineCap =
+        ctx!.lineCap =
           "round";
 
         if (
           annotation.tool ===
           "highlighter"
         ) {
-          ctx.globalAlpha =
+          ctx!.globalAlpha =
             0.3;
         } else {
-          ctx.globalAlpha =
+          ctx!.globalAlpha =
             1;
         }
 
-        ctx.moveTo(
+        ctx!.moveTo(
           annotation.points[0].x,
           annotation.points[0].y
         );
@@ -99,13 +99,13 @@ export default function AnnotationCanvas({
           annotation.points.length;
           i++
         ) {
-          ctx.lineTo(
+          ctx!.lineTo(
             annotation.points[i].x,
             annotation.points[i].y
           );
         }
 
-        ctx.stroke();
+        ctx!.stroke();
       });
   }
 
@@ -141,60 +141,59 @@ export default function AnnotationCanvas({
     }
 
     function move(
-      e: PointerEvent
-    ) {
-      if (!drawing) return;
+  e: PointerEvent
+) {
+  if (!drawing) return;
 
-      points.push({
-        x: e.offsetX,
-        y: e.offsetY,
-      });
+  points.push({
+    x: e.offsetX,
+    y: e.offsetY,
+  });
 
-      redraw();
+  redraw();
 
-      ctx.beginPath();
+  ctx!.beginPath();
 
-      ctx.strokeStyle =
-        color;
+  ctx!.strokeStyle =
+    color;
 
-      ctx.lineCap =
-        "round";
+  ctx!.lineCap =
+    "round";
 
-      ctx.lineWidth =
-        pressureEnabled
-          ? Math.max(
-              1,
-              e.pressure *
-                brushSize
-            )
-          : brushSize;
-
-      if (
-        tool ===
-        "highlighter"
-      ) {
-        ctx.globalAlpha =
-          0.3;
-      } else {
-        ctx.globalAlpha =
-          1;
-      }
-
-      ctx.moveTo(
-        points[0].x,
-        points[0].y
-      );
-
-      points.forEach((p) =>
-        ctx.lineTo(
-          p.x,
-          p.y
+  ctx!.lineWidth =
+    pressureEnabled
+      ? Math.max(
+          1,
+          e.pressure *
+            brushSize
         )
-      );
+      : brushSize;
 
-      ctx.stroke();
-    }
+  if (
+    tool ===
+    "highlighter"
+  ) {
+    ctx!.globalAlpha =
+      0.3;
+  } else {
+    ctx!.globalAlpha =
+      1;
+  }
 
+  ctx!.moveTo(
+    points[0].x,
+    points[0].y
+  );
+
+  points.forEach((p) =>
+    ctx!.lineTo(
+      p.x,
+      p.y
+    )
+  );
+
+  ctx!.stroke();
+}
     function up() {
       if (!drawing) return;
 
