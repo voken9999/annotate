@@ -77,6 +77,16 @@ className={`               px-3
       "
     />
 
+
+     <button
+  onClick={() =>
+    setTool("highlighter")
+  }
+>
+  Highlighter
+</button>
+
+     
     <div className="flex items-center gap-2">
       <span className="text-xs text-zinc-400">
         Size
