@@ -9,6 +9,7 @@ import {
 
 type ToolType =
   | "pen"
+  | "highlighter"
   | "eraser"
   | "rectangle"
   | "circle"
